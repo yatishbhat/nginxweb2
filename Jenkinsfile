@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE_NAME = 'nginxweb1'
-        CONTAINER_NAME = 'my-docker-container'
+        CONTAINER_NAME = 'my-docker-container1'
         IP_ADDRESS = '172.17.0.3'
         PORT = '80'
     }
