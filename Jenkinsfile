@@ -17,7 +17,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    sh "docker run -d -p ${IP_ADDRESS}:${PORT}:${PORT} --name ${CONTAINER_NAME} ${DOCKER_IMAGE_NAME}"
+                    sh "docker run -d -p ${IP_ADDRESS}:${PORT}:80 --name ${CONTAINER_NAME} ${DOCKER_IMAGE_NAME}"
                 }
             }
         }
