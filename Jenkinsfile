@@ -3,7 +3,7 @@ pipeline {
     environment {
         DOCKER_IMAGE_NAME = 'nginxweb1'
         CONTAINER_NAME = 'my-docker-container'
-        IP_ADDRESS = '172.17.0.3'
+        IP_ADDRESS = '192.168.1.7'
         PORT = '80'
     }
     stages {
