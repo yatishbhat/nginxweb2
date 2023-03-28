@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE_NAME = 'nginxwebcustom'
+        DOCKER_IMAGE_NAME = 'yathishbhat/nginxwebcustom'
         IP_ADDRESS = '127.0.0.1'
         PORT = '50'
     }
@@ -16,7 +16,7 @@ pipeline {
         stage('Artifact') {
             steps {
                 script {
-                      docker.withRegistry('https://hub.docker.com/repository/docker/yathishbhat/project/general', 'my-registry-credentials') {
+                      docker.withRegistry('https://hub.docker.com/', 'my-registry-credentials') {
 
                  
                         def dockerImage = docker.image(${DOCKER_IMAGE_NAME})
