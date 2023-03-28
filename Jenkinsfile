@@ -6,14 +6,30 @@ pipeline {
         PORT = '50'
     }
     stages {
-        stage('Build Docker Image') {
+        stage('Build') {
             steps {
                 script {
                     sh "docker build -t ${DOCKER_IMAGE_NAME} ."
                 }
             }
         }
-        stage('Run Docker Container') {
+        stage('Artifact') {
+            steps {
+                script {
+                      docker.withRegistry('https://my-docker-registry.com', 'my-registry-credentials') {
+
+                 
+                        def dockerImage = docker.image(${DOCKER_IMAGE_NAME})
+                        dockerImage.tag("${env.BUILD_NUMBER}", 'latest')
+
+                        
+                        dockerImage.push("${env.BUILD_NUMBER}")
+                        dockerImage.push('latest')
+                      }
+                }
+            }
+        }
+        stage('Deploy') {
             steps {
                 script {
                     sh "docker run -d -p ${IP_ADDRESS}:${PORT}:80 ${DOCKER_IMAGE_NAME}"
