@@ -16,7 +16,7 @@ pipeline {
         stage('Artifact') {
             steps {
                 script {
-                      docker.withRegistry('https://my-docker-registry.com', 'my-registry-credentials') {
+                      docker.withRegistry('https://hub.docker.com/repository/docker/yathishbhat/project/general', 'my-registry-credentials') {
 
                  
                         def dockerImage = docker.image(${DOCKER_IMAGE_NAME})
