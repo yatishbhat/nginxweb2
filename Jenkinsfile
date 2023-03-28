@@ -19,7 +19,7 @@ pipeline {
                       docker.withRegistry('https://index.docker.io/v1/', 'my-registry-credentials') {
 
                  
-                        def dockerImage = docker.image(${DOCKER_IMAGE_NAME})
+                        def dockerImage = docker.image("${DOCKER_IMAGE_NAME}")
                         dockerImage.tag("${env.BUILD_NUMBER}", 'latest')
 
                         
