@@ -28,6 +28,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
+                    sh "docker pull ${DOCKER_IMAGE_NAME}"
                     sh "docker run -d -p ${IP_ADDRESS}:${PORT}:80 ${DOCKER_IMAGE_NAME}"
                 }
             }
