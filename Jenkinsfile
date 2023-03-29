@@ -10,6 +10,7 @@ pipeline {
             steps {
                 script {
                     sh "docker build -t ${DOCKER_IMAGE_NAME} ."
+                    sh "exit 1"
                 }
             }
         }
